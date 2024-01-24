@@ -61,7 +61,7 @@ streamlit.text(new_entry)
 if st.button("Add Fruit"):
     # Execute the Snowflake query to insert the fruit into the table
 
-    my_cur.execute(f"INSERT INTO PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST (new_entry) VALUES (%s)", (new_entry,))
+    my_cur.execute(f"INSERT INTO PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST VALUES new_entry")
     my_cur.commit()
     my_cur.close()
 
