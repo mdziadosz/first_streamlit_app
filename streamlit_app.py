@@ -1,4 +1,4 @@
-import streamlit
+import streamlit as st
 import requests
 import snowflake.connector
 
@@ -55,4 +55,18 @@ streamlit.dataframe(my_data_rows)
 new_entry = streamlit.text_input('What fruit would you like to add ?')
 streamlit.text(new_entry)
 #new_response = requests.get(new_entry)
-my_cur.execute("INSERT INTO PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST new_entry")
+
+
+# Create a Streamlit button to submit the form
+if st.button("Add Fruit"):
+    # Execute the Snowflake query to insert the fruit into the table
+
+    my_cur.execute(f"INSERT INTO PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST (new_entry) VALUES (%s)", (new_entry,))
+    my_cur.commit()
+    my_cur.close()
+
+    # Display a success message to the user
+    st.success(f"The fruit '{fruit_name}' has been added to the table.")
+
+
+
