@@ -45,7 +45,6 @@ try:
 except URLError as e: 
   streamlit.error()
 
-
 # let's query out trial account metadata
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
