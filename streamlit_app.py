@@ -1,6 +1,8 @@
 import streamlit
 import requests
+import pandas
 import snowflake.connector
+from urllib.error import URLError
 
 streamlit.title('My Parents New Healthy Dinner')
 
@@ -11,7 +13,6 @@ streamlit.text('🐔 Hard-boiled Free-Range egg')
 streamlit.text('🥑🍞 Avocado toast ')
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
-import pandas
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 # Choose the Fruit Name Column as the Index
 my_fruit_list = my_fruit_list.set_index('Fruit')
@@ -54,6 +55,6 @@ streamlit.dataframe(my_data_rows)
 # add ... 
 add_new_fruit = streamlit.text_input('What fruit would you like to add ?')
 #streamlit.text(add_new_fruit)
-my_cur.execute("insert into fruit_load_list values ('add_new_fruit')")
+my_cur.execute("insert into fruit_load_list values (add_new_fruit)")
 
 
