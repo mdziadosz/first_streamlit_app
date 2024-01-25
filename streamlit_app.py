@@ -38,6 +38,8 @@ try:
     # output it the screen as a table 
     streamlit.dataframe(fruityvice_normalized)
 
+except URLError as e: 
+  streamlit.error()
 
 
 # let's query out trial account metadata
