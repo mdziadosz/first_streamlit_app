@@ -39,7 +39,7 @@ try:
     streamlit.dataframe(fruityvice_normalized)
 
 
-'''
+
 # let's query out trial account metadata
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
@@ -58,5 +58,3 @@ streamlit.dataframe(my_data_rows)
 add_new_fruit = streamlit.text_input('What fruit would you like to add ?')
 #streamlit.text(add_new_fruit)
 my_cur.execute("insert into fruit_load_list values (add_new_fruit)")
-
-'''
